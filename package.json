@@ -9,6 +9,8 @@
     "react",
     "css modules"
   ],
+  "repository": "https://github.com/bloc-digital/useclasslist",
+  "homepage": "https://github.com/bloc-digital/useclasslist/blob/main/README.md",
   "jest": {
     "testEnvironment": "jsdom"
   },
