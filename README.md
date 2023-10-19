@@ -5,7 +5,7 @@
 ## Install
 
 ```bash
-npm install --save @bloc/useclasslist
+npm install --save @blocdigital/useclasslist
 ```
 
 ## Usage
