@@ -18,7 +18,7 @@ import useClassList from '@blocdigital/useclasslist';
 import styles from './styles.module.scss';
 
 export default function GreatContent({ active, className, ...props }) {
-  // Create a classNist that can be used for your base component.
+  // Create a classList that can be used for your base component.
   // A use callback can push in to the array of classes to add extra classes.
   const classList = useClassList(
     { defaultClass: 'great-content', className, maps: styles, string: true },
