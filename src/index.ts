@@ -1,4 +1,4 @@
-import useClassList from './useClassList';
+import useClassList from './useClassList.js';
 
 export default useClassList;
-export { mapClasses, mapClassesCurried } from './mapClasses';
+export { mapClasses, mapClassesCurried } from './mapClasses.js';
