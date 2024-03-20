@@ -37,35 +37,27 @@ export default function useClassList(
     if (defaultClass) _classList.push(defaultClass);
 
     // add className
-    if (className) {
-      if (typeof className === 'string') {
-        for (const name of className.split(' ')) _classList.push(name);
-      } else if (Array.isArray(className)) {
-        for (const name of className) _classList.push(name);
-      }
-    }
+    className && _classList.push(...(typeof className === 'string' ? className.split(' ') : className.slice(0)));
 
     // add variant classes
-    if (variant) {
-      if (typeof variant === 'string') {
-        for (const name of variant.split(' ')) _classList.push(`${defaultClass}--${name}`);
-      } else if (Array.isArray(variant)) {
-        for (const name of variant) _classList.push(`${defaultClass}--${name}`);
-      }
-    }
+    variant &&
+      _classList.push(
+        ...(typeof variant === 'string' ? variant.split(' ') : variant.slice(0)).map(
+          (name) => `${defaultClass}--${name}`,
+        ),
+      );
 
     // if there is a callback, call it
     if (typeof callback === 'function') callback(_classList);
 
     // if a maps object has been passed, add the classes from the maps
+    const _output = _classList.slice(0);
     if (maps) {
       for (const cn of _classList) {
-        if (maps[cn]) _classList.push(maps[cn]);
+        if (maps[cn]) _output.push(maps[cn]);
       }
     }
 
-    if (string) return _classList.join(' ');
-
-    return _classList;
+    return string ? _output.join(' ') : _output;
   }, [defaultClass, className, variant, maps, string, callback]);
 }
