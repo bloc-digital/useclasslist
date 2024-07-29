@@ -1,6 +1,6 @@
 import { useMemo } from 'react';
 
-interface IClassListProps {
+interface IClassListProps<T> {
   /** default classes to be applied to the array */
   defaultClass?: string;
   /** classes to be applied to the array */
@@ -10,7 +10,7 @@ interface IClassListProps {
   /** maps classes to be applied to the array */
   maps?: { [key: string]: string };
   /** determines if the output is a string or an array */
-  string?: boolean;
+  string?: T;
 }
 
 /**
@@ -26,12 +26,12 @@ interface IClassListProps {
  *
  * @returns set of class names in array or string format
  */
-export default function useClassList(
-  { defaultClass, className, variant, maps, string = false }: IClassListProps,
+export default function useClassList<T extends boolean = false>(
+  { defaultClass, className, variant, maps, string }: IClassListProps<T>,
   callback?: (list: string[]) => void,
-): string | string[] {
+): T extends true ? string : string[] {
   return useMemo(() => {
-    const _classList = [];
+    const _classList: string[] = [];
 
     // add default classes
     if (defaultClass) _classList.push(defaultClass);
@@ -58,6 +58,6 @@ export default function useClassList(
       }
     }
 
-    return string ? _output.join(' ') : _output;
+    return (string ? _output.join(' ') : _output) as T extends true ? string : string[];
   }, [defaultClass, className, variant, maps, string, callback]);
 }
