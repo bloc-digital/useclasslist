@@ -1,6 +1,6 @@
 import { renderHook } from '@testing-library/react';
 
-import useClassList from './index';
+import useClassList from './useClassList';
 
 describe('Hook should be able to produce valid lists', () => {
   it('Generate a list of classes as an array', () => {
