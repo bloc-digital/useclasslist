@@ -1,7 +1,7 @@
 {
   "name": "@blocdigital/useclasslist",
   "type": "module",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "React hook that allows modifying class lists easily with css modules.",
   "author": "Bloc Digital <web@bloc.digital>",
   "license": "MIT",
